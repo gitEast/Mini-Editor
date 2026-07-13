@@ -1,5 +1,34 @@
 {
   "cmake.configureOnOpen": true,
   "cmake.buildDirectory": "${workspaceFolder}/build",
-  "C_Cpp.default.cppStandard": "c++20"
+  "C_Cpp.default.cppStandard": "c++20",
+  "cmake.options.statusBarVisibility": "visible",
+  "cmake.options.advanced": {
+    "build": {
+      "statusBarVisibility": "inherit",
+      "inheritDefault": "visible"
+    },
+    "launch": {
+      "statusBarVisibility": "inherit",
+      "inheritDefault": "visible"
+    },
+    "debug": {
+      "statusBarVisibility": "inherit",
+      "inheritDefault": "visible"
+    },
+    "workflow": {
+      "statusBarVisibility": "hidden",
+      "inheritDefault": "hidden"
+    },
+    "cpack": { "statusBarVisibility": "hidden", "inheritDefault": "hidden" },
+    "kit": { "statusBarVisibility": "hidden", "inheritDefault": "hidden" },
+    "variant": { "statusBarVisibility": "hidden", "inheritDefault": "hidden" },
+    "logging": {
+      "statusBarVisibility": "hidden",
+      "inheritDefault": "hidden"
+    }
+  },
+  "files.exclude": {
+    "**/.git": false
+  }
 }
