@@ -13,3 +13,6 @@ include_directories(include)
 
 # 创建最终的可执行文件目标，并指定入口远嘛
 add_executable(MiniEditor src/main.cpp)
+
+# 测试程序可执行文件
+add_executable(run_tests tests/test_main.cpp)
