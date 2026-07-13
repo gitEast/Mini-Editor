@@ -407,6 +407,10 @@ This is **Markdown**
    3. vs code 插件
       - `C/C++`: 提供语法高亮、代码提示
       - `CMake Tools`: 负责一键编译、运行、调试
+2. 测试代码可运行 `src/main.cpp` 与 `tests/test_main.cpp`
+3. pre-commit 约束
+   1. `$ brew install pre-commit`
+   2. `.pre-commit-config.yaml` 文件
 
 ### Week 2：AST设计
 
