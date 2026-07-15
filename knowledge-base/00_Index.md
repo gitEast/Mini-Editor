@@ -2,6 +2,10 @@
 
 ## 具体目录
 
+### Week 01
+
+[C++ 智能指针（Smart Pointers）](./lang_smart_pointers.md)
+
 ## 命名逻辑
 
 ```
