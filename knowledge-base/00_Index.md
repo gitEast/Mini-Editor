@@ -31,20 +31,17 @@ cpp-core/  (或你的知识库根目录)
 ```markdown
 # 🏷️ Topic: C++ 智能指针 (Smart Pointers)
 
-## 1. 核心概念与 Code 示例
+## 🫯 为什么会有这个东西（Pain Point）
 
-- `std::unique_ptr`: 独占所有权，不可复制，只能 move。用于生命周期明确的局部或树形拓扑。
-- `std::shared_ptr`: 引用计数所有权。会有运行时额外开销（原子操作计数）。
+## 💡 核心思想（Design Philosophy）
 
-快速复现的最小代码片段
+## 🛠 实现原理（Under the Hood）
 
-## 2. 避坑指南 / 内存模型 (Under the Hood)
+## 🧩 常用 API（How to Use）
 
-- 为什么不用 raw pointer？（防止忘记 delete 导致内存泄漏）
-- `std::shared_ptr` 的循环引用陷阱（会导致内存永远无法释放，需配合 `std::weak_ptr`）。
+## ⚠️ 工程避坑（Pitfalls）
 
-## 3. AST 项目应用场景 (Connect)
+## 🚀 项目中的应用（Project Practice）
 
-- 结论：AST 的 Parent-Child 关系中，Child 节点一律使用 `std::unique_ptr<ASTNode>`。
-- 原因：语法树是严格的单向拓扑，没有循环引用，`unique_ptr` 零运行时开销，最符合语义。
+## 🎯 总结（Takeaway）
 ```
