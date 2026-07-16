@@ -5,6 +5,7 @@
 ### Week 01
 
 [C++ 智能指针（Smart Pointers）](./lang_smart_pointers.md)
+[面向对象与多态（Virtual & Override）](./lang_oop_virtual_override.md)
 
 ## 命名逻辑
 
