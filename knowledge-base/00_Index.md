@@ -6,6 +6,7 @@
 
 [C++ 智能指针（Smart Pointers）](./lang_smart_pointers.md)
 [面向对象与多态（Virtual & Override）](./lang_oop_virtual_override.md)
+[std::string_view（C++现代语法）](./lang_string_view.md)
 
 ## 命名逻辑
 
@@ -13,7 +14,7 @@
 cpp-core/  (或你的知识库根目录)
 ├── 00_Index.md                   # 索引与学习路线路线图（核心！）
 │
-├── lang_cpp20_string_view.md     # C++20 特性
+├── lang_string_view.md           # C++ 特性 string_view
 ├── lang_smart_pointers.md        # 智能指针 (shared_ptr/unique_ptr)
 ├── lang_oop_virtual_override.md  # 面向对象与多态 (virtual/override)
 │
