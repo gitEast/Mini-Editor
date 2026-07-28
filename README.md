@@ -420,12 +420,12 @@ This is **Markdown**
 
 实现：
 
-    Node
-    ├── DocumentNode
-    ├── HeadingNode
-    ├── ParagraphNode
-    ├── TextNode
-    └── BoldNode
+    Node（基类）
+    ├── DocumentNode        （根节点：包含多个块级节点）
+    ├── HeadingNode         （标题节点：块级，包含 level 和行内子节点）
+    ├── ParagraphNode       （段落节点：块级，包含行内子节点）
+    ├── TextNode            （纯文本节点：叶子/行内）
+    └── BoldNode            （加粗节点：行内，可包含文本等子节点）
 
 掌握：
 
