@@ -15,8 +15,8 @@ std::vector<Token> Lexer::tokenize() {
     else
       tokens.push_back(readText());  // 读取普通文本
   }
-  tokens.emplace_back(
-      Token{TokenType::EndOfFile, "", line, column});  // 添加文件结束标记
+  tokens.emplace_back(TokenType::EndOfFile, "", line,
+                      column);  // 添加文件结束标记
   return tokens;
 }
 
