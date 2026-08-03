@@ -13,7 +13,8 @@ include_directories(include src src/parser src/parser/lexer)
 
 # 把 src/parser 下的代码自动收集并打包成静态库 Parser
 file(GLOB_RECURSE PARSER_SOURCES "src/parser/*.cpp")
-add_library(Parser STATIC ${PARSER_SOURCES})
+add_library(Parser STATIC ${PARSER_SOURCES}
+  src/parser/visitor/RenderVisitor.h)
 
 enable_testing()
 

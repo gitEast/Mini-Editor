@@ -1,65 +1,88 @@
-#include "Lexer.h"
+#include "parser/lexer/Lexer.h"
 
+#include <cassert>
 #include <cctype>
 
-Lexer::Lexer(const std::string_view input) : input(input) {}
+Lexer::Lexer(const std::string_view source) : source_(source) {}
 
+/* ------------ ⬇ Lexer 状态机 ⬇ ------------ */
 std::vector<Token> Lexer::tokenize() {
-  std::vector<Token> tokens;
+  // 1. 初始化（目的：每次调用都得到相同结果）
+  tokens_.clear();
+  start_ = 0;
+  current_ = 0;
+  line_ = 1;
+  column_ = 1;
+  tokenLine_ = 1;
+  tokenColumn_ = 1;
+  // 2. 循环读取 Token：每次一个
   while (!isAtEnd()) {
-    char c = peek();
-    if (c == '#')
-      tokens.push_back(readHeadingMark());  // 读取标题标记
-    else if (c == '\n')
-      tokens.push_back(readNewLine());  // 读取换行符
-    else
-      tokens.push_back(readText());  // 读取普通文本
+    // 2.1 保存 Token 的起点
+    start_ = current_;
+    tokenLine_ = line_;
+    tokenColumn_ = column_;
+    // 2.2 扫描并生成 Token
+    scanToken();
   }
-  tokens.emplace_back(TokenType::EndOfFile, "", line,
-                      column);  // 添加文件结束标记
-  return tokens;
+  // 3. 标识解析结束，并返回结果
+  emitEndOfFile();  // ‼️ 结束标识
+  return tokens_;
 }
-
-char Lexer::peek() const {
-  if (isAtEnd()) return '\0';  // 返回空字符表示结束
-  return input[currentIndex];
-}
-char Lexer::advance() {
-  char c = input[currentIndex++];
-  if (c == '\n') {
-    line++;
-    column = 1;
-  } else {
-    column++;
+void Lexer::scanToken() {
+  switch (peek()) {
+    case '#':  // hash
+      advance();
+      emitToken(TokenType::Hash);
+      break;
+    case '\n':  // New Line
+      advance();
+      emitToken(TokenType::NewLine);
+      break;
+    default:  // 普通字符
+      readText();
+      break;
   }
-  return c;
 }
-bool Lexer::isAtEnd() const { return currentIndex >= input.size(); }
-
-Token Lexer::readHeadingMark() {
-  size_t startLine = line;
-  size_t startCol = column;
-  size_t start = currentIndex;
-  // 读取连续的 #
-  while (peek() == '#') advance();
-  return Token(TokenType::HeadingMark,
-               input.substr(start, currentIndex - start), startLine, startCol);
-}
-Token Lexer::readNewLine() {
-  size_t startLine = line;
-  size_t startCol = column;
-  size_t start = currentIndex;
-  advance();  // 消费换行符
-  return Token(TokenType::NewLine, input.substr(start, 1), startLine, startCol);
-}
-Token Lexer::readText() {
-  size_t startLine = line;
-  size_t startCol = column;
-  size_t start = currentIndex;
-  // 遇到 special 字符（# 或 \n）就停止读取普通文
-  while (!isAtEnd() && peek() != '#' && peek() != '\n') {
+void Lexer::readText() {
+  while (!isAtEnd()) {
+    const char c = peek();
+    if (c == '#' || c == '\n') break;
     advance();
   }
-  return Token(TokenType::Text, input.substr(start, currentIndex - start),
-               startLine, startCol);
+  emitToken(TokenType::Text);
 }
+/* ------------ ⬆ Lexer 状态机 ⬆ ------------ */
+
+/* ------------ ⬇ 位置相关 ⬇ ------------ */
+bool Lexer::isAtEnd() const { return current_ >= source_.size(); }
+char Lexer::peek() const {
+  if (isAtEnd()) return '\0';  // 返回空字符表示结束
+  return source_[current_];
+}
+/** 消费一个字符：位置信息的唯一修改入口 */
+char Lexer::advance() {
+  // 前提：保证一定有字符未解析
+  assert(!isAtEnd());
+  // 1. 消费字符
+  const char c = source_[current_++];
+  // 2. 维护当前 cursor 的位置信息
+  if (c == '\n') {
+    line_++;
+    column_ = 1;
+  } else {
+    column_++;
+  }
+  // 3. 返回需要消费的字符
+  return c;
+}
+/* ------------ ⬆ 位置相关 ⬆ ------------ */
+
+/* ------------ ⬇ 生成 Token ⬇ ------------ */
+void Lexer::emitToken(TokenType type) {
+  std::string_view lexeme = source_.substr(start_, current_ - start_);
+  tokens_.emplace_back(type, lexeme, tokenLine_, tokenColumn_);
+}
+void Lexer::emitEndOfFile() {
+  tokens_.emplace_back(TokenType::EndOfFile, "", line_, column_);
+}
+/* ------------ ⬆ 生成 Token ⬆ ------------ */

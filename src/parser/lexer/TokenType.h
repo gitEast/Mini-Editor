@@ -7,8 +7,8 @@
  * @copyright Copyright (c) 2026
  */
 enum class TokenType {
-  HeadingMark,  // #
-  Text,         // 任意连续字符，包括空格
-  NewLine,      // 换行符 \n
-  EndOfFile     // 文件结束标记
+  Hash,      // #
+  Text,      // 任意连续字符，包括空格
+  NewLine,   // 换行符 \n
+  EndOfFile  // 文件结束标记
 };
