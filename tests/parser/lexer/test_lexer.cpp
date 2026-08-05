@@ -47,12 +47,12 @@ void testLexerBasicText() {
   assert(tokens.size() == 8);
 
   // 断言每个 Token 的属性
-  assertToken(tokens[0], TokenType::HeadingMark, "#", 1, 1);
+  assertToken(tokens[0], TokenType::Hash, "#", 1, 1);
   assertToken(tokens[1], TokenType::Text, " Hello", 1, 2);
   assertToken(tokens[2], TokenType::NewLine, "\n", 1, 8);
   assertToken(tokens[3], TokenType::Text, "This is a test.", 2, 1);
   assertToken(tokens[4], TokenType::NewLine, "\n", 2, 16);
-  assertToken(tokens[5], TokenType::HeadingMark, "#", 3, 1);
+  assertToken(tokens[5], TokenType::Hash, "#", 3, 1);
   assertToken(tokens[6], TokenType::Text, " Another Heading", 3, 2);
   assertToken(tokens[7], TokenType::EndOfFile, "", 3, 18);
   std::cout << "All lexer basic text tests passed successfully! 🎉\n";
@@ -81,7 +81,7 @@ void testHeadingMark() {
   assert(tokens.size() == 3);
 
   // 断言每个 Token 的属性
-  assertToken(tokens[0], TokenType::HeadingMark, "###", 1, 1);
+  assertToken(tokens[0], TokenType::Hash, "###", 1, 1);
   assertToken(tokens[1], TokenType::Text, " Heading Level 3", 1, 4);
   assertToken(tokens[2], TokenType::EndOfFile, "", 1, 20);
 
@@ -97,12 +97,12 @@ void testMultiLine() {
   assert(tokens.size() == 10);
 
   // 断言每个 Token 的属性
-  assertToken(tokens[0], TokenType::HeadingMark, "#", 1, 1);
+  assertToken(tokens[0], TokenType::Hash, "#", 1, 1);
   assertToken(tokens[1], TokenType::Text, " Heading 1", 1, 2);
   assertToken(tokens[2], TokenType::NewLine, "\n", 1, 12);
   assertToken(tokens[3], TokenType::Text, "Some text here.", 2, 1);
   assertToken(tokens[4], TokenType::NewLine, "\n", 2, 16);
-  assertToken(tokens[5], TokenType::HeadingMark, "##", 3, 1);
+  assertToken(tokens[5], TokenType::Hash, "##", 3, 1);
   assertToken(tokens[6], TokenType::Text, " Heading 2", 3, 3);
   assertToken(tokens[7], TokenType::NewLine, "\n", 3, 13);
   assertToken(tokens[8], TokenType::Text, "More text.", 4, 1);

@@ -54,13 +54,13 @@ void Lexer::readText() {
 /* ------------ ⬆ Lexer 状态机 ⬆ ------------ */
 
 /* ------------ ⬇ 位置相关 ⬇ ------------ */
-bool Lexer::isAtEnd() const { return current_ >= source_.size(); }
-char Lexer::peek() const {
+bool Lexer::isAtEnd() const noexcept { return current_ >= source_.size(); }
+char Lexer::peek() const noexcept {
   if (isAtEnd()) return '\0';  // 返回空字符表示结束
   return source_[current_];
 }
 /** 消费一个字符：位置信息的唯一修改入口 */
-char Lexer::advance() {
+char Lexer::advance() noexcept {
   // 前提：保证一定有字符未解析
   assert(!isAtEnd());
   // 1. 消费字符
