@@ -6,10 +6,17 @@
  * @date 2026-07-28
  * @copyright Copyright (c) 2026
  */
-#include "NodeType.h"
+#pragma once
+
+namespace mini::parser {
+/** 节点枚举类型 */
+enum class NodeType { Document, Heading, Paragraph, Text };
 
 class Node {
  public:
   virtual ~Node() = default;
-  virtual NodeType getType() const = 0;
+
+  [[nodiscard]]
+  virtual NodeType type() const noexcept = 0;  // 提供统一接口，纯虚函数
 };
+}  // namespace mini::parser

@@ -19,7 +19,10 @@ add_library(Parser STATIC ${PARSER_SOURCES}
 enable_testing()
 
 # 创建最终的可执行文件目标，并指定入口源码
-add_executable(MiniEditor src/main.cpp)
+add_executable(MiniEditor src/main.cpp
+  src/parser/ast/TextNode.h
+  src/parser/ast/DocumentNode.h
+  src/parser/ast/NodeType.h)
 # 链接静态库
 target_link_libraries(MiniEditor PRIVATE Parser)
 
