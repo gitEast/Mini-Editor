@@ -83,12 +83,14 @@ void testHeadingMark() {
   auto tokens = lexer.tokenize();
 
   // 断言 Token 数量
-  assert(tokens.size() == 3);
+  assert(tokens.size() == 5);
 
   // 断言每个 Token 的属性
-  assertToken(tokens[0], TokenType::Hash, "###", 1, 1);
-  assertToken(tokens[1], TokenType::Text, " Heading Level 3", 1, 4);
-  assertToken(tokens[2], TokenType::EndOfFile, "", 1, 20);
+  assertToken(tokens[0], TokenType::Hash, "#", 1, 1);
+  assertToken(tokens[1], TokenType::Hash, "#", 1, 2);
+  assertToken(tokens[2], TokenType::Hash, "#", 1, 3);
+  assertToken(tokens[3], TokenType::Text, " Heading Level 3", 1, 4);
+  assertToken(tokens[4], TokenType::EndOfFile, "", 1, 20);
 
   std::cout << "Heading mark token test passed successfully! 🎉\n";
 }
