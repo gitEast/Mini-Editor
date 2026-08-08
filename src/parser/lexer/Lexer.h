@@ -12,6 +12,7 @@
 
 #include "Token.h"
 
+namespace mini::parser {
 class Lexer {
  public:
   explicit Lexer(const std::string_view source);  // 传入要解析的 Markdown 文本
@@ -31,14 +32,15 @@ class Lexer {
   void emitToken(TokenType type);
   void emitEndOfFile();
 
-  std::string_view source_;     // 保存本次扫描的完整输入
+  std::string_view source_;    // 保存本次扫描的完整输入
   std::vector<Token> tokens_;  // 保存解析出的 Token 数组
 
   size_t start_ = 0;
   size_t current_ = 0;
-  
+
   size_t line_ = 1;
   size_t column_ = 1;
   size_t tokenLine_ = 1;
   size_t tokenColumn_ = 1;
 };
+}  // namespace mini::parser

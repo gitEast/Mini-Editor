@@ -16,9 +16,15 @@ namespace mini::parser {
 class TextNode final : public Node {
  public:
   explicit TextNode(const std::string_view text) : text_(text) {}
+
   [[nodiscard]]
   NodeType type() const noexcept override {
     return NodeType::Text;
+  }
+
+  [[nodiscard]]
+  const std::string_view& text() const noexcept {
+    return text_;
   }
 
  private:

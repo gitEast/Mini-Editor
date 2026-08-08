@@ -3,6 +3,7 @@
 #include <cassert>
 #include <cctype>
 
+namespace mini::parser {
 Lexer::Lexer(const std::string_view source) : source_(source) {}
 
 /* ------------ ⬇ Lexer 状态机 ⬇ ------------ */
@@ -86,3 +87,5 @@ void Lexer::emitEndOfFile() {
   tokens_.emplace_back(TokenType::EndOfFile, "", line_, column_);
 }
 /* ------------ ⬆ 生成 Token ⬆ ------------ */
+
+}  // namespace mini::parser

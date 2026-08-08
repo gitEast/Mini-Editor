@@ -91,10 +91,12 @@ bool Parser::isHeadingStart() const noexcept {
     level++;
     offset++;
   }
+  // 保证标题等级: #{1,6}
   if (level < 1 || level > 6) return false;
+  // 保证 #{1,6} 后紧跟的是 Text
   if (!check(TokenType::Text, offset)) return false;
   const std::string_view text = peek(offset).lexeme;
-  // 保证 Text 存在，且以空格开头
+  // 保证 Text 有内容，且以空格开头
   return !text.empty() && text.front() == ' ';
 }
 
@@ -119,7 +121,7 @@ std::unique_ptr<Node> Parser::parseHeading() {
   return std::make_unique<HeadingNode>(level, std::move(text));
 }
 
-/** 构造段落 */
+/** 构造段落：段落内允许出现一个换行符 */
 std::unique_ptr<Node> Parser::parseParagraph() {
   std::string text;
 
@@ -130,9 +132,11 @@ std::unique_ptr<Node> Parser::parseParagraph() {
       text += advance().lexeme;
     }
     if (isAtEnd()) break;
+    // 消费一个换行符
     advance();
+    // 段落结束标识：EOF || 第二个换行符 || 标题
     if (isAtEnd() || check(TokenType::NewLine) || isHeadingStart()) break;
-    // 增加软换行
+    // 增加软换行：对上述消费的补偿
     text += '\n';
   }
 

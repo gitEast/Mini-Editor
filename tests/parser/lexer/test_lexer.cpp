@@ -11,7 +11,12 @@
 #include <cassert>
 #include <iostream>
 
-#include "Lexer.h"
+#include "parser/lexer/Lexer.h"
+
+namespace {
+using mini::parser::Lexer;
+using mini::parser::Token;
+using mini::parser::TokenType;
 
 /**
  * @brief 断言 Token 的属性是否符合预期
@@ -109,6 +114,7 @@ void testMultiLine() {
   assertToken(tokens[9], TokenType::EndOfFile, "", 4, 11);
   std::cout << "Multi-line token test passed successfully! 🎉\n";
 }
+}  // namespace
 
 int main() {
   testLexerBasicText();
