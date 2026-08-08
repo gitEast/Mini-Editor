@@ -2,7 +2,7 @@
 #include "parser/ast/Node.h"
 #include "parser/ast/TextNode.h"
 
-namespace mini::parser {
+namespace MiniEditor::parser {
 class HeadingNode final : public Node {
  public:
   HeadingNode(size_t level, std::string text) : level_(level), text_(text) {
@@ -27,4 +27,4 @@ class HeadingNode final : public Node {
   size_t level_;
   TextNode text_;
 };
-}  // namespace mini::parser
+}  // namespace MiniEditor::parser

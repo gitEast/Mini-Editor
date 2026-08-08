@@ -8,11 +8,11 @@
 #include "parser/parser/Parser.h"
 
 namespace {
-using mini::parser::DocumentNode;
-using mini::parser::HeadingNode;
-using mini::parser::Node;
-using mini::parser::NodeType;
-using mini::parser::ParagraphNode;
+using MiniEditor::parser::DocumentNode;
+using MiniEditor::parser::HeadingNode;
+using MiniEditor::parser::Node;
+using MiniEditor::parser::NodeType;
+using MiniEditor::parser::ParagraphNode;
 
 void printDocument(const DocumentNode& document) {
   std::cout << "Document\n";
@@ -55,10 +55,10 @@ int main() {
       "## Goals\n"
       "Learn C++ through practice.";
 
-  mini::parser::Lexer lexer{source};
+  MiniEditor::parser::Lexer lexer{source};
   auto tokens = lexer.tokenize();
 
-  mini::parser::Parser parser{std::move(tokens)};
+  MiniEditor::parser::Parser parser{std::move(tokens)};
   const auto document = parser.parse();
 
   printDocument(document);

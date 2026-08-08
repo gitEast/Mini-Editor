@@ -12,7 +12,7 @@
 
 #include "parser/ast/Node.h"
 
-namespace mini::parser {
+namespace MiniEditor::parser {
 class TextNode final : public Node {
  public:
   explicit TextNode(const std::string text) : text_(std::move(text)) {}
@@ -30,4 +30,4 @@ class TextNode final : public Node {
  private:
   std::string text_;
 };
-}  // namespace mini::parser
+}  // namespace MiniEditor::parser

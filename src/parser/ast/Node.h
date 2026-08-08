@@ -8,7 +8,7 @@
  */
 #pragma once
 
-namespace mini::parser {
+namespace MiniEditor::parser {
 /** 节点枚举类型 */
 enum class NodeType { Document, Heading, Paragraph, Text };
 
@@ -19,4 +19,4 @@ class Node {
   [[nodiscard]]
   virtual NodeType type() const noexcept = 0;  // 提供统一接口，纯虚函数
 };
-}  // namespace mini::parser
+}  // namespace MiniEditor::parser

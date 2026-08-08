@@ -14,9 +14,9 @@
 #include "parser/lexer/Lexer.h"
 
 namespace {
-using mini::parser::Lexer;
-using mini::parser::Token;
-using mini::parser::TokenType;
+using MiniEditor::parser::Lexer;
+using MiniEditor::parser::Token;
+using MiniEditor::parser::TokenType;
 
 /**
  * @brief 断言 Token 的属性是否符合预期

@@ -13,7 +13,7 @@
 #include "parser/ast/Node.h"
 #include "parser/ast/TextNode.h"
 
-namespace mini::parser {
+namespace MiniEditor::parser {
 class ParagraphNode final : public Node {
  private:
   TextNode text_;
@@ -32,4 +32,4 @@ class ParagraphNode final : public Node {
   }
 };
 
-}  // namespace mini::parser
+}  // namespace MiniEditor::parser

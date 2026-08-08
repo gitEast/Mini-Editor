@@ -8,7 +8,7 @@
 #include "parser/ast/HeadingNode.h"
 #include "parser/ast/ParagraphNode.h"
 
-namespace mini::parser {
+namespace MiniEditor::parser {
 /** 输入契约：只要存在且仅在末尾存在一个 EndOfFile Token */
 Parser::Parser(std::vector<Token> tokens) : tokens_(std::move(tokens)) {
   if (tokens_.empty()) {
@@ -142,4 +142,4 @@ std::unique_ptr<Node> Parser::parseParagraph() {
 
   return std::make_unique<ParagraphNode>(std::move(text));
 }
-}  // namespace mini::parser
+}  // namespace MiniEditor::parser

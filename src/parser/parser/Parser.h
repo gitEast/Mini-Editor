@@ -16,7 +16,7 @@
 #include "parser/ast/Node.h"
 #include "parser/lexer/Token.h"
 
-namespace mini::parser {
+namespace MiniEditor::parser {
 class Parser {
  public:
   explicit Parser(std::vector<Token> tokens);
@@ -51,4 +51,4 @@ class Parser {
   size_t current_ = 0;
 };
 
-}  // namespace mini::parser
+}  // namespace MiniEditor::parser

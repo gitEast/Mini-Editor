@@ -12,7 +12,7 @@
 
 #include "Token.h"
 
-namespace mini::parser {
+namespace MiniEditor::parser {
 class Lexer {
  public:
   explicit Lexer(const std::string_view source);  // 传入要解析的 Markdown 文本
@@ -43,4 +43,4 @@ class Lexer {
   size_t tokenLine_ = 1;
   size_t tokenColumn_ = 1;
 };
-}  // namespace mini::parser
+}  // namespace MiniEditor::parser

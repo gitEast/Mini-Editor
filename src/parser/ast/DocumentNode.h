@@ -13,7 +13,7 @@
 
 #include "parser/ast/Node.h"
 
-namespace mini::parser {
+namespace MiniEditor::parser {
 class DocumentNode final : public Node {
  private:
   std::vector<std::unique_ptr<Node>> children_;
@@ -38,4 +38,4 @@ class DocumentNode final : public Node {
     return children_;
   }
 };
-}  // namespace mini::parser
+}  // namespace MiniEditor::parser

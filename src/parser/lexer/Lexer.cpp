@@ -3,7 +3,7 @@
 #include <cassert>
 #include <cctype>
 
-namespace mini::parser {
+namespace MiniEditor::parser {
 Lexer::Lexer(const std::string_view source) : source_(source) {}
 
 /* ------------ ⬇ Lexer 状态机 ⬇ ------------ */
@@ -88,4 +88,4 @@ void Lexer::emitEndOfFile() {
 }
 /* ------------ ⬆ 生成 Token ⬆ ------------ */
 
-}  // namespace mini::parser
+}  // namespace MiniEditor::parser
