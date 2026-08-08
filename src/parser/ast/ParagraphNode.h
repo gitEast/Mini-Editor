@@ -19,7 +19,7 @@ class ParagraphNode final : public Node {
   TextNode text_;
 
  public:
-  explicit ParagraphNode(std::string_view text) : text_(text) {}
+  explicit ParagraphNode(std::string text) : text_(text) {}
 
   [[nodiscard]]
   NodeType type() const noexcept override {

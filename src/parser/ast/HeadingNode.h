@@ -5,8 +5,7 @@
 namespace mini::parser {
 class HeadingNode final : public Node {
  public:
-  HeadingNode(size_t level, std::string_view text)
-      : level_(level), text_(text) {
+  HeadingNode(size_t level, std::string text) : level_(level), text_(text) {
     if (level_ < 1 || level_ > 6) {
       throw std::invalid_argument{"Heading level must between 1 and 6"};
     }

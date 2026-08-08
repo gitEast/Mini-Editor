@@ -25,7 +25,7 @@ void printDocument(const DocumentNode& document) {
         // 引用，以访问标题层级和文本。
         const auto& heading = static_cast<const HeadingNode&>(node);
         std::cout << "   Heading(level=" << heading.level() << ")\n"
-                  << "    Text(\"" << heading.text().text() << "\")\n";
+                  << "     Text(\"" << heading.text().text() << "\")\n";
         break;
       }
       case NodeType::Paragraph: {

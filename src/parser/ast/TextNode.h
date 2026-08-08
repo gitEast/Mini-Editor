@@ -7,7 +7,7 @@
  * @copyright Copyright (c) 2026
  */
 #pragma once
-#include <string_view>
+#include <string>
 #include <utility>
 
 #include "parser/ast/Node.h"
@@ -15,7 +15,7 @@
 namespace mini::parser {
 class TextNode final : public Node {
  public:
-  explicit TextNode(const std::string_view text) : text_(text) {}
+  explicit TextNode(const std::string text) : text_(std::move(text)) {}
 
   [[nodiscard]]
   NodeType type() const noexcept override {
@@ -23,11 +23,11 @@ class TextNode final : public Node {
   }
 
   [[nodiscard]]
-  const std::string_view& text() const noexcept {
+  const std::string& text() const noexcept {
     return text_;
   }
 
  private:
-  std::string_view text_;
+  std::string text_;
 };
 }  // namespace mini::parser
