@@ -19,6 +19,7 @@ include(CTest)
 option(MINIEDITOR_BUILD_APP "Build the MiniEditor command-line demo" ON)
 option(MINIEDITOR_WARNINGS_AS_ERRORS "Treat compiler warnings as errors" OFF)
 option(MINIEDITOR_ENABLE_SANITIZERS "Enable AddressSanitizer and UndefinedBehaviorsSanitizer" OFF)
+option(MINIEDITOR_BUILD_QT_APP "Build the MiniEditor Qt desktop app" OFF) # Core 和 CLI 都不应该因为环境没有配置 Qt 而无法配置
 
 # 生产代码位于 src
 add_subdirectory(src)

@@ -21,3 +21,8 @@ target_compile_features(minieditor_core
 if(MINIEDITOR_BUILD_APP)
   add_subdirectory(app)
 endif()
+if(MINIEDITOR_BUILD_QT_APP)
+  find_package(Qt6 6.2 REQUIRED COMPONENTS Widgets)
+  add_subdirectory(ui)
+  add_subdirectory(qt_app)
+endif()
