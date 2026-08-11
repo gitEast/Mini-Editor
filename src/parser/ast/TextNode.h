@@ -27,6 +27,8 @@ class TextNode final : public Node {
     return text_;
   }
 
+  void accept(Visitor& visitor) const override { visitor.visit(*this); }
+
  private:
   std::string text_;
 };

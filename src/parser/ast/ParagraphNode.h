@@ -30,6 +30,8 @@ class ParagraphNode final : public Node {
   const TextNode& text() const noexcept {
     return text_;
   }
+
+  void accept(Visitor& visitor) const override { visitor.visit(*this); }
 };
 
 }  // namespace MiniEditor::parser

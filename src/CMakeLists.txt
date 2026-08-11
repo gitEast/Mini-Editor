@@ -9,6 +9,7 @@ target_link_libraries(minieditor_core
     MiniEditor::AST
     MiniEditor::Lexer
     MiniEditor::Parser
+    MiniEditor::HtmlRenderer
 )
 
 # Core 不产生库文件

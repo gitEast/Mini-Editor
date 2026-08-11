@@ -23,6 +23,8 @@ class HeadingNode final : public Node {
     return text_;
   }
 
+  void accept(Visitor& visitor) const override { visitor.visit(*this); }
+
  private:
   size_t level_;
   TextNode text_;

@@ -101,7 +101,7 @@ void testMultiLine() {
   auto tokens = lexer.tokenize();
 
   // 断言 Token 数量
-  assert(tokens.size() == 10);
+  assert(tokens.size() == 11);
 
   // 断言每个 Token 的属性
   assertToken(tokens[0], TokenType::Hash, "#", 1, 1);
@@ -109,11 +109,12 @@ void testMultiLine() {
   assertToken(tokens[2], TokenType::NewLine, "\n", 1, 12);
   assertToken(tokens[3], TokenType::Text, "Some text here.", 2, 1);
   assertToken(tokens[4], TokenType::NewLine, "\n", 2, 16);
-  assertToken(tokens[5], TokenType::Hash, "##", 3, 1);
-  assertToken(tokens[6], TokenType::Text, " Heading 2", 3, 3);
-  assertToken(tokens[7], TokenType::NewLine, "\n", 3, 13);
-  assertToken(tokens[8], TokenType::Text, "More text.", 4, 1);
-  assertToken(tokens[9], TokenType::EndOfFile, "", 4, 11);
+  assertToken(tokens[5], TokenType::Hash, "#", 3, 1);
+  assertToken(tokens[6], TokenType::Hash, "#", 3, 2);
+  assertToken(tokens[7], TokenType::Text, " Heading 2", 3, 3);
+  assertToken(tokens[8], TokenType::NewLine, "\n", 3, 13);
+  assertToken(tokens[9], TokenType::Text, "More text.", 4, 1);
+  assertToken(tokens[10], TokenType::EndOfFile, "", 4, 11);
   std::cout << "Multi-line token test passed successfully! 🎉\n";
 }
 }  // namespace

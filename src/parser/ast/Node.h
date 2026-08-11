@@ -8,6 +8,8 @@
  */
 #pragma once
 
+#include "parser/visitor/Visitor.h"
+
 namespace MiniEditor::parser {
 /** 节点枚举类型 */
 enum class NodeType { Document, Heading, Paragraph, Text };
@@ -18,5 +20,7 @@ class Node {
 
   [[nodiscard]]
   virtual NodeType type() const noexcept = 0;  // 提供统一接口，纯虚函数
+
+  virtual void accept(Visitor& visitor) const = 0;
 };
 }  // namespace MiniEditor::parser

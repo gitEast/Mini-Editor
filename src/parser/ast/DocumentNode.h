@@ -37,5 +37,7 @@ class DocumentNode final : public Node {
   const std::vector<std::unique_ptr<Node>>& children() const noexcept {
     return children_;
   }
+
+  void accept(Visitor& visitor) const override { visitor.visit(*this); }
 };
 }  // namespace MiniEditor::parser

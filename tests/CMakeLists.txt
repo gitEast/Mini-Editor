@@ -25,29 +25,33 @@ set_tests_properties(minieditor.lexer
     LABELS "unit;lexer"
 )
 
-# add_executable(minieditor_parser_tests
-#     ParserTests.cpp
-# )
+##############################################
 
-# target_link_libraries(minieditor_parser_tests
-#     PRIVATE
-#         MiniEditor::Parser
-# )
+add_executable(minieditor_html_renderer_tests
+  parser/visitor/test_html_render_visitor.cpp
+)
 
-# target_compile_features(minieditor_parser_tests
-#     PRIVATE
-#         cxx_std_20
-# )
+target_link_libraries(minieditor_html_renderer_tests
+  PRIVATE
+    MiniEditor::HtmlRenderer
+    MiniEditor::Parser
+    MiniEditor::Lexer
+)
 
-# minieditor_enable_warnings(minieditor_parser_tests)
-# minieditor_enable_sanitizers(minieditor_parser_tests)
+target_compile_features(minieditor_html_renderer_tests
+  PRIVATE
+    cxx_std_20
+)
 
-# add_test(
-#     NAME minieditor.parser
-#     COMMAND minieditor_parser_tests
-# )
+minieditor_enable_warnings(minieditor_html_renderer_tests)
+minieditor_enable_sanitizers(minieditor_html_renderer_tests)
 
-# set_tests_properties(minieditor.parser
-#     PROPERTIES
-#         LABELS "unit;parser"
-# )
+add_test(
+  NAME minieditor.html_renderer
+  COMMAND minieditor_html_renderer_tests
+)
+
+set_tests_properties(minieditor.html_renderer
+  PROPERTIES
+    LABELS "unit;visitor;renderer"
+)
